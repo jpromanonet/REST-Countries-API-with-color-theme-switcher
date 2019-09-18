@@ -1,0 +1,14 @@
+@import "../../assets/styles/libs/vars";
+.countryDetails {
+  main {
+    font-size: $detailsPage;
+  }
+}
+.dark {
+  color: $white;
+  background: $veryDarkBlue;
+}
+.light {
+  color: $veryDarkBlue--lightMode;
+  background: $veryLightGray;
+}

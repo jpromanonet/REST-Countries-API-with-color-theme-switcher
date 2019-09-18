@@ -1,0 +1,50 @@
+@import "../../assets/styles/libs/vars";
+@import "../../assets/styles/base/base";
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  span:first-of-type {
+    font-size: 14px;
+  }
+  button {
+    border: none;
+    background: none;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // width: 30%;
+    outline: none;
+    i {
+      margin-right: 10px;
+    }
+  }
+  @media screen and(min-width:$tabletBreakPoint) {
+    span:first-of-type {
+      font-size: 16px;
+    }
+    button {
+      font-size: 14px;
+    }
+  }
+}
+
+.dark {
+  color: white;
+  background: $darkBlue;
+}
+.light {
+  color: $veryDarkBlue--lightMode;
+  background: $white;
+}
+
+.bold {
+  font-weight: $extraBoldFontWeight;
+}
+
+.semiBold {
+  font-weight: $lightFontWeight;
+}
