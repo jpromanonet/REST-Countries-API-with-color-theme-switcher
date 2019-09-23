@@ -1,0 +1,52 @@
+@import "../../../assets/styles/base/base";
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 52px;
+  }
+  input {
+    border: none;
+    outline: none;
+  }
+
+  .regionFilter {
+    display: flex;
+    flex-direction: column;
+    ul {
+      margin-top: 5px;
+      padding: 0;
+      li {
+        list-style-type: none;
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+.dark {
+  span,
+  span *,
+  div > * {
+    color: $white;
+    background: $darkBlue;
+  }
+  input::placeholder {
+    color: $white;
+  }
+}
+.light {
+  span,
+  span *,
+  div > * {
+    color: $veryDarkBlue--lightMode;
+    background: $white;
+  }
+  input::placeholder {
+    color: $veryDarkBlue--lightMode;
+  }
+}
