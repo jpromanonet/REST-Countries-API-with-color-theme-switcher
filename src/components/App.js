@@ -7,26 +7,20 @@ import NotFound from "./NotFoundPage/NotFound";
 
 class App extends Component {
   state = {
-    countrySearchField: "",
-    darkMode: true,
-    regionFilter: ""
+    darkMode: true
   };
 
   appModeChanger = () => {
     this.setState(prevState => ({ darkMode: !prevState.darkMode }));
   };
 
-  onCountrySearchFieldChange = counrty => {
-    this.setState(() => ({ countrySearchField: counrty }));
-  };
-
-  onRegionChange = region => {
-    // alert(region);
-    this.setState(() => ({ regionFilter: region }));
-  };
-
   render() {
-    const { darkMode, regionFilter, countrySearchField } = this.state;
+    const {
+      countries,
+      darkMode,
+      regionFilter,
+      countrySearchField
+    } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -37,11 +31,7 @@ class App extends Component {
               <Dashboard
                 {...routeProps}
                 appModeChanger={this.appModeChanger}
-                countrySearchField={countrySearchField}
                 darkMode={darkMode}
-                regionFilter={regionFilter}
-                onCountrySearchFieldChange={this.onCountrySearchFieldChange}
-                onRegionChange={this.onRegionChange}
               />
             )}
           ></Route>

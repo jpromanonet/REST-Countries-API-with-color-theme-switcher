@@ -45,7 +45,7 @@ const FilterBar = ({
             }}
           >
             <li>africa</li>
-            <li>america</li>
+            <li>americas</li>
             <li>asia</li>
             <li>europe</li>
             <li>oceania</li>

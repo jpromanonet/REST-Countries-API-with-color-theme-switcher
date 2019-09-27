@@ -6,8 +6,12 @@
     margin-bottom: 35px;
     display: flex;
     align-items: center;
-    border-radius: 5px;
+    border-radius: $normalBorderRadius;
     height: 52px;
+    i{
+      height: 100%;
+      width: 25px;
+    }
   }
   input {
     border: none;
@@ -17,6 +21,13 @@
   .regionFilter {
     display: flex;
     flex-direction: column;
+    > * {
+      border-radius: $normalBorderRadius;
+    }
+    button {
+      height: 25px;
+      width: 25px;
+    }
     ul {
       margin-top: 5px;
       padding: 0;
