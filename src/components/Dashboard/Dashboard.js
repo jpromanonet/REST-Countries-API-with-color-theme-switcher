@@ -6,8 +6,8 @@ import FilterBar from "./FilterBar/FilterBar";
 import CountryList from "./CountryList/CountryList";
 class Dashboard extends Component {
   state = {
-    totalCountries: [],
-    filteredCountries: [],
+    totalCountries: this.props.totalCountries,
+    filteredCountries: null,
     countriesListPage: 1,
     countrySearchField: "",
     regionFilter: ""
@@ -22,14 +22,13 @@ class Dashboard extends Component {
 
   //update region filter based on the dropdown menu's current item
   onRegionChange = region => {
-    // alert(region);
     this.setState(
       () => ({ regionFilter: region }),
       this.updateFilteredCountries
     );
   };
 
-  //update the filtered countries list based on the current search field
+  //update the filtered countries list based on the current state
   updateFilteredCountries = () => {
     this.setState(prevState => {
       const { totalCountries, countrySearchField, regionFilter } = prevState;
@@ -48,51 +47,18 @@ class Dashboard extends Component {
       return { filteredCountries };
     });
   };
-  //update the filtered countries list based on the current search field
-  updateFilteredCountriesBasedOnRegionFilter = () => {
-    this.setState(prevState => {
-      const {
-        regionFilter,
-        totalCountries,
-        filteredCountries,
-        countrySearchField
-      } = prevState;
 
-      let tempFilteredCountries = countrySearchField
-        ? filteredCountries
-        : totalCountries;
-      console.log("regionfilter", tempFilteredCountries);
-
-      tempFilteredCountries = tempFilteredCountries.filter(country => {
-        console.log(
-          "regionfilter",
-          regionFilter,
-          "countryregion",
-          country.region
-        );
-        return country.region.toLowerCase() === regionFilter.toLowerCase();
-      });
-      console.log("regionfilter", tempFilteredCountries);
-      return { filteredCountries: tempFilteredCountries };
-    });
-  };
-
-  componentDidMount() {
-    // fetch the countrylist data from the api
-    axios
-      .get(`https://restcountries.eu/rest/v2/all`)
-      .then(res => {
-        this.setState(() => ({
-          totalCountries: res.data,
-          filteredCountries: res.data
-        }));
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  //update the state whenever the props change
+  componentDidUpdate(prevProps) {
+    if (this.props.totalCountries !== prevProps.totalCountries) {
+      this.setState(() => ({
+        totalCountries: this.props.totalCountries
+      }));
+    }
   }
 
   render() {
+    console.log("this is from dashboard", this.props.totalCountries);
     const {
       countrySearchField,
       filteredCountries,
@@ -116,7 +82,11 @@ class Dashboard extends Component {
           />
         </header>
         <main className="dashboard">
-          <CountryList filteredCountries={filteredCountries} />
+          <CountryList
+            filteredCountries={
+              filteredCountries ? filteredCountries : totalCountries
+            }
+          />
         </main>
         {/* <footer className="dashboard"></footer> */}
       </React.Fragment>

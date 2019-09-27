@@ -3,6 +3,13 @@
   main {
     font-size: $detailsPage;
   }
+  p {
+    a {
+      text-decoration: none;
+      color: $white;
+      border: 1px solid $white;
+    }
+  }
 }
 .dark {
   color: $white;
