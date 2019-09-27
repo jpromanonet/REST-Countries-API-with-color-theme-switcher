@@ -77,10 +77,20 @@ class CountryDetails extends Component {
         <header className={styles.countryDetails}>
           <NavBar darkMode={darkMode} appModeChanger={appModeChanger} />
         </header>
-        <main className={`${styles.countryDetails} ${darkMode ? styles.dark : styles.light}`}>
+        <main
+          className={`${styles.countryDetails} ${
+            darkMode ? styles.dark : styles.light
+          }`}
+        >
           {this.props.match.params.countryName}
           {countryDetails && (
             <React.Fragment>
+              <p>
+                <img
+                  src={countryDetails.flag}
+                  alt={`${countryDetails.name} flag`}
+                />
+              </p>
               <p>{countryDetails.nativeName}</p>
               <p>{countryDetails.population}</p>
               <p>{countryDetails.region}</p>

@@ -1,0 +1,9 @@
+@import "../../../../assets/styles/libs/vars";
+.countryItem {
+  background: $darkBlue;
+  margin: 25px 0;
+  img {
+    width: 100px;
+    height: auto;
+  }
+}

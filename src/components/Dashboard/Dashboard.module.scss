@@ -1,6 +1,14 @@
 @import "../../assets/styles/libs/vars";
 .dashboard {
-  main {
-    font-size: $homePageItems;
+  font-size: $homePageItems;
+  color: $white;
+  a {
+    color: $white;
+    text-decoration: none !important;
   }
+}
+.dark {
+  background: $veryDarkBlue;
+}
+.light {
 }

@@ -8,7 +8,7 @@ const CountryList = ({ filteredCountries }) => {
   return (
     <React.Fragment>
       CountryList goes here
-      {filteredCountries.slice(0, 9).map(country => (
+      {filteredCountries.map(country => (
         <CountryItem key={country.name} {...country} />
       ))}
       <Pagination />
