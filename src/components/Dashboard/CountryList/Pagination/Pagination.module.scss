@@ -1,0 +1,20 @@
+@import "../../../App.scss";
+.pagination {
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    color: $white;
+    &:disabled {
+      color: $darkGray;
+    }
+  }
+  .nextPage {
+    i {
+      transform: rotate(180deg);
+    }
+  }
+  .isActive {
+    background: green;
+  }
+}
