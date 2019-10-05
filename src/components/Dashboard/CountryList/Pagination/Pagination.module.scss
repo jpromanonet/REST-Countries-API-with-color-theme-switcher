@@ -4,9 +4,10 @@
     background: none;
     border: none;
     outline: none;
-    color: $white;
     &:disabled {
-      color: $darkGray;
+      i {
+        color: $darkGray !important;
+      }
     }
   }
   .nextPage {
@@ -15,6 +16,6 @@
     }
   }
   .isActive {
-    background: green;
+    color: green;
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Pagination.module.scss";
 
-//declare constant for determining the current situation for setCurrentPage function
+//declare constants for determining the current situation for setCurrentPage function
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 //setCurrentPage based on user interactions
@@ -65,6 +65,7 @@ const paginationForSecondAndOneBeforeLastPage = (
     <React.Fragment>
       <button onClick={() => setCurrentPage(0)}>1</button>
       {currentPage + 1 === 2 ? (
+        //2nd page's buttons
         <React.Fragment>
           <button className={styles.isActive}>2</button>
           <button>
@@ -72,6 +73,7 @@ const paginationForSecondAndOneBeforeLastPage = (
           </button>
         </React.Fragment>
       ) : (
+        //n-1st page's buttons
         <React.Fragment>
           <button>
             <i className="fas fa-ellipsis-h"></i>
@@ -91,11 +93,12 @@ const paginationMiddleSectionCreator = (
   totalPages,
   setCurrentPage
 ) => {
+  //if there is only one page available
   if (totalPages === 1) {
     return <button>1</button>;
   }
   switch (currentPage + 1) {
-    //create pagination for 1st and last page
+    //create pagination buttons for 1st and last page
     case 1:
     case totalPages: {
       return firstAndLastPagesPagination(
@@ -104,7 +107,7 @@ const paginationMiddleSectionCreator = (
         setCurrentPage
       );
     }
-    // create pagination for 2nd and n-1st page
+    // create pagination buttons for 2nd and n-1st page
     case 2:
     case totalPages - 1: {
       return paginationForSecondAndOneBeforeLastPage(
@@ -113,7 +116,7 @@ const paginationMiddleSectionCreator = (
         setCurrentPage
       );
     }
-    //create pagination for the middle ones
+    //create pagination buttons for the middle ones
     default: {
       return (
         <React.Fragment>
@@ -133,19 +136,23 @@ const paginationMiddleSectionCreator = (
     }
   }
 };
-const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
+const Pagination = ({ darkMode, currentPage, setCurrentPage, totalPages }) => {
   return (
-    <div className={styles.pagination}>
+    <div
+      className={`${styles.pagination} ${
+        darkMode ? `dark darkElements` : `light lightElements`
+      }`}
+    >
       <p>Current Page:{currentPage + 1}</p>
       <p>Total Pages : {totalPages}</p>
-      {/* disable next and previous page button whenever there is only 1 page available */}
+      {/* disable next and previous page buttons whenever there is only 1 page available */}
       <button
-        className="leftPage"
         onClick={() => onSetCurrentPage(setCurrentPage, currentPage, DECREMENT)}
         disabled={currentPage === 0}
       >
         <i className="fas fa-arrow-left"></i>
       </button>
+      {/* create the middle buttons for pagination component, based on the currentPage */}
       {paginationMiddleSectionCreator(currentPage, totalPages, setCurrentPage)}
       <button
         className={styles.nextPage}

@@ -12,10 +12,11 @@ const FilterBar = ({
   return (
     <div
       className={`${styles.filterBar} ${styles.container} ${
-        darkMode ? styles.dark : styles.light
+        darkMode ? `dark` : `light`
       }`}
     >
-      <span>
+      {/* search bar */}
+      <span className={darkMode ? `darkElements` : `lightElements`}>
         <i className="fas fa-search"></i>
         <input
           type="text"
@@ -24,21 +25,27 @@ const FilterBar = ({
           value={countrySearchField}
         />
       </span>
-      {/*this section gets filled with mock data for now,
-        it'll get populated with the api's data later */}
+      {/* region filter changer */}
       <div className={styles.regionFilter}>
-        <div onClick={() => setDropDownFilterStatus(!dropDownFilterStatus)}>
+        <div
+          className={darkMode ? `darkElements` : `lightElements`}
+          onClick={() => setDropDownFilterStatus(!dropDownFilterStatus)}
+        >
           {regionFilter
             ? regionFilter.charAt(0).toUpperCase() + regionFilter.slice(1)
             : "Filter by Region"}
         </div>
         {regionFilter && (
-          <button onClick={() => onRegionChange("")}>
+          <button
+            className={darkMode ? `darkElements` : `lightElements`}
+            onClick={() => onRegionChange("")}
+          >
             <i className="fas fa-times"></i>
           </button>
         )}
         {dropDownFilterStatus && (
           <ul
+            className={darkMode ? `darkElements` : `lightElements`}
             onClick={async e => {
               await onRegionChange(e.target.innerHTML);
               setDropDownFilterStatus(!dropDownFilterStatus);

@@ -1,11 +1,15 @@
 @import "../../assets/styles/libs/vars";
 @import "../../assets/styles/base/base";
+@import "../../assets/styles/libs/mixins";
 .navBar {
+  @include boxShadowGenerator($normalShadow);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
   a:first-of-type {
     font-size: 14px;
     color: inherit;
@@ -32,15 +36,6 @@
       font-size: 14px;
     }
   }
-}
-
-.dark {
-  color: white;
-  background: $darkBlue;
-}
-.light {
-  color: $veryDarkBlue--lightMode;
-  background: $white;
 }
 
 .bold {

@@ -1,7 +1,5 @@
-@mixin backgroundUrl($div, $url) {
-  &:nth-of-type(#{$div}) {
-    div {
-      background: url($url);
-    }
-  }
+@mixin boxShadowGenerator($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
 }

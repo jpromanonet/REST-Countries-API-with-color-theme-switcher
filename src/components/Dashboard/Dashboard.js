@@ -81,11 +81,16 @@ class Dashboard extends Component {
             onRegionChange={this.onRegionChange}
           />
         </header>
-        <main className={`${styles.dashboard} ${this.props.darkMode?styles.dark:styles.light}`}>
+        <main
+          className={`${styles.dashboard} ${
+            this.props.darkMode ? `dark` : `light`
+          }`}
+        >
           <CountryList
             filteredCountries={
               filteredCountries ? filteredCountries : totalCountries
             }
+            darkMode={this.props.darkMode}
           />
         </main>
         {/* <footer className="dashboard"></footer> */}

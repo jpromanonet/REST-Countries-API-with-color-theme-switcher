@@ -16,6 +16,7 @@
   input {
     border: none;
     outline: none;
+    background: none;
   }
 
   .regionFilter {
@@ -27,6 +28,7 @@
     button {
       height: 25px;
       width: 25px;
+      border: none;
     }
     ul {
       margin-top: 5px;
@@ -39,25 +41,3 @@
   }
 }
 
-.dark {
-  span,
-  span *,
-  div > * {
-    color: $white;
-    background: $darkBlue;
-  }
-  input::placeholder {
-    color: $white;
-  }
-}
-.light {
-  span,
-  span *,
-  div > * {
-    color: $veryDarkBlue--lightMode;
-    background: $white;
-  }
-  input::placeholder {
-    color: $veryDarkBlue--lightMode;
-  }
-}

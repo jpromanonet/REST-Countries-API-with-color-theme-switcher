@@ -9,9 +9,28 @@
   color: $darkGray;
 }
 
-.dark{
-
+.dark {
+  background: $veryDarkBlue;
+  color: $white;
 }
-.light{
-    
+.light {
+  background: $veryLightGray !important;
+  color: $veryDarkBlue--lightMode !important;
+  input {
+    color: $darkGray !important;
+  }
+}
+.darkElements {
+  background: $darkBlue;
+  * {
+    color: $white;
+  }
+  input {
+    &::placeholder {
+      color: $white;
+    }
+  }
+}
+.lightElements {
+  background: $white!important;
 }

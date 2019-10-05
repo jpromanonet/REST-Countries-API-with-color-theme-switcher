@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import styles from "./CountryDetails.module.scss";
 import NavBar from "../NavBar/NavBar";
+import BorderCountries from "./BorderCountries/BorderCountries";
 
 class CountryDetails extends Component {
   constructor(props) {
@@ -12,28 +13,6 @@ class CountryDetails extends Component {
       countryDetails: null
     };
   }
-
-  //create the adjcent countries list
-  //based on the borders of the current country
-  borderMaker = () => {
-    let borderCountries = this.state.totalCountries.filter(country => {
-      return this.state.countryDetails.borders.includes(country.alpha3Code);
-    });
-
-    borderCountries = borderCountries.map(country => (
-      <p key={country.name}>
-        <Link to={`/${country.name}`}>{country.name}</Link>
-      </p>
-    ));
-    return (
-      borderCountries.length !== 0 && (
-        <React.Fragment>
-          <h3>borders:</h3>
-          {borderCountries}
-        </React.Fragment>
-      )
-    );
-  };
 
   componentDidMount() {
     axios
@@ -76,11 +55,15 @@ class CountryDetails extends Component {
       <React.Fragment>
         <header className={styles.countryDetails}>
           <NavBar darkMode={darkMode} appModeChanger={appModeChanger} />
+          <Link
+            to="/"
+            className={darkMode ? "dark darkElements" : "light lightElements"}
+          >
+            Back
+          </Link>
         </header>
         <main
-          className={`${styles.countryDetails} ${
-            darkMode ? styles.dark : styles.light
-          }`}
+          className={`${styles.countryDetails} ${darkMode ? `dark` : `light`}`}
         >
           {this.props.match.params.countryName}
           {countryDetails && (
@@ -104,7 +87,9 @@ class CountryDetails extends Component {
                   <p key={name}>{name}</p>
                 ))}
               </React.Fragment>
-              {totalCountries && this.borderMaker()}
+              {totalCountries && (
+                <BorderCountries {...this.state} darkMode={darkMode} />
+              )}
             </React.Fragment>
           )}
         </main>

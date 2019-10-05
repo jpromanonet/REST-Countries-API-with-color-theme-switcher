@@ -6,7 +6,7 @@ const NavBar = ({ darkMode, page, appModeChanger }) => (
   <>
     <nav
       className={`${styles.container} ${styles.navBar} ${
-        darkMode ? styles.dark : styles.light
+        darkMode ? `dark darkElements` : `light lightElements`
       }`}
     >
       <Link to="/" className={styles.bold}>
@@ -14,7 +14,7 @@ const NavBar = ({ darkMode, page, appModeChanger }) => (
       </Link>
       <button
         className={`${styles.semiBold} ${
-          darkMode ? styles.dark : styles.light
+          darkMode ? `dark darkElements` : `light lightElements`
         }`}
         onClick={appModeChanger}
       >
