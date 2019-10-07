@@ -82,7 +82,7 @@ class Dashboard extends Component {
           />
         </header>
         <main
-          className={`${styles.dashboard} ${
+          className={`${styles.container} ${styles.dashboard} ${
             this.props.darkMode ? `dark` : `light`
           }`}
         >

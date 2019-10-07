@@ -1,4 +1,5 @@
 @import "../../assets/styles/libs/vars";
+@import "../../assets/styles/base/base";
 .dashboard {
   font-size: $homePageItems;
   color: $white;
@@ -7,8 +8,4 @@
     text-decoration: none !important;
   }
 }
-.dark {
-  background: $veryDarkBlue;
-}
-.light {
-}
+

@@ -1,14 +1,19 @@
 @import "../../../assets/styles/base/base";
+@import "../../../assets/styles/libs/vars";
+@import "../../../assets/styles/libs/mixins";
 .filterBar {
   display: flex;
   flex-direction: column;
-  span {
+  position: relative;
+  height: 180px;
+  > span {
+    @include boxShadowGenerator($normalShadow);
     margin-bottom: 35px;
     display: flex;
     align-items: center;
     border-radius: $normalBorderRadius;
     height: 52px;
-    i{
+    i {
       height: 100%;
       width: 25px;
     }
@@ -22,8 +27,17 @@
   .regionFilter {
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 118px;
+    z-index: 1;
     > * {
+      @include boxShadowGenerator($normalShadow);
       border-radius: $normalBorderRadius;
+    }
+    div {
+      height: 52px;
+      display: flex;
+      align-items: center;
     }
     button {
       height: 25px;
@@ -40,4 +54,3 @@
     }
   }
 }
-

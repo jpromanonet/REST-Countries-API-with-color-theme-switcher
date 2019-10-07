@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Numeral from "numeral";
 import { Link, withRouter } from "react-router-dom";
 import styles from "./CountryDetails.module.scss";
 import NavBar from "../NavBar/NavBar";
@@ -75,7 +76,7 @@ class CountryDetails extends Component {
                 />
               </p>
               <p>{countryDetails.nativeName}</p>
-              <p>{countryDetails.population}</p>
+              <p>{Numeral(countryDetails.population).format(0, 0)}</p>
               <p>{countryDetails.region}</p>
               <p>{countryDetails.subregion}</p>
               <p>{countryDetails.capital}</p>

@@ -8,6 +8,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-right: 1.2rem;
+  padding-left: 1.2rem;
   position: relative;
   z-index: 1;
   a:first-of-type {
@@ -29,6 +31,8 @@
     }
   }
   @media screen and(min-width:$tabletBreakPoint) {
+    padding-left: 3rem;
+    padding-right: 3rem;
     a:first-of-type {
       font-size: 16px;
     }
