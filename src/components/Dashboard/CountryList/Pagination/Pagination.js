@@ -39,7 +39,7 @@ const firstAndLastPagesPagination = (
       >
         1
       </button>
-      <button>
+      <button className={styles.elipsis}>
         <i className="fas fa-ellipsis-h"></i>
       </button>
       <button
@@ -68,14 +68,14 @@ const paginationForSecondAndOneBeforeLastPage = (
         //2nd page's buttons
         <React.Fragment>
           <button className={styles.isActive}>2</button>
-          <button>
+          <button className={styles.elipsis}>
             <i className="fas fa-ellipsis-h"></i>
           </button>
         </React.Fragment>
       ) : (
         //n-1st page's buttons
         <React.Fragment>
-          <button>
+          <button className={styles.elipsis}>
             <i className="fas fa-ellipsis-h"></i>
           </button>
           <button className={styles.isActive}>{totalPages - 1}</button>
@@ -95,7 +95,7 @@ const paginationMiddleSectionCreator = (
 ) => {
   //if there is only one page available
   if (totalPages === 1) {
-    return <button>1</button>;
+    return <button className={styles.isActive}>1</button>;
   }
   switch (currentPage + 1) {
     //create pagination buttons for 1st and last page
@@ -121,11 +121,11 @@ const paginationMiddleSectionCreator = (
       return (
         <React.Fragment>
           <button onClick={() => setCurrentPage(0)}>1</button>
-          <button>
+          <button className={styles.elipsis}>
             <i className="fas fa-ellipsis-h"></i>
           </button>
           <button className={styles.isActive}>{currentPage + 1}</button>
-          <button>
+          <button className={styles.elipsis}>
             <i className="fas fa-ellipsis-h"></i>
           </button>
           <button onClick={() => setCurrentPage(totalPages - 1)}>
@@ -136,15 +136,11 @@ const paginationMiddleSectionCreator = (
     }
   }
 };
+
+//component declaration
 const Pagination = ({ darkMode, currentPage, setCurrentPage, totalPages }) => {
   return (
-    <div
-      className={`${styles.pagination} ${
-        darkMode ? `dark darkElements` : `light lightElements`
-      }`}
-    >
-      <p>Current Page:{currentPage + 1}</p>
-      <p>Total Pages : {totalPages}</p>
+    <div className={`${styles.pagination} ${darkMode ? `dark ` : `light `}`}>
       {/* disable next and previous page buttons whenever there is only 1 page available */}
       <button
         onClick={() => onSetCurrentPage(setCurrentPage, currentPage, DECREMENT)}

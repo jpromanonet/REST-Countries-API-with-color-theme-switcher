@@ -1,10 +1,18 @@
 @import "../../../App.scss";
 .pagination {
+  // background: none;
+  margin-top: 30px;
+  * {
+    font-size: 1.1rem;
+    font-weight: $extraBoldFontWeight;
+  }
   button {
     background: none;
     border: none;
+    cursor: pointer;
     outline: none;
     &:disabled {
+      cursor: default;
       i {
         color: $darkGray !important;
       }
@@ -16,6 +24,13 @@
     }
   }
   .isActive {
-    color: green;
+    color: rgb(0, 166, 207);
+  }
+  //elipsis icon's styling
+  .elipsis {
+    cursor: default;
+    i {
+      color: $darkGray;
+    }
   }
 }

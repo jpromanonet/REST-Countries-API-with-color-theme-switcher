@@ -39,7 +39,7 @@ const CountryItem = ({ capital, darkMode, name, population, region, flag }) => {
             <span
               className={darkMode ? styles.darkCaption : styles.lightCaption}
             >
-              {capital}
+              {capital || "-"}
             </span>
           </div>
         </figcaption>

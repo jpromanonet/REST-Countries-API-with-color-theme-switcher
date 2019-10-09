@@ -12,6 +12,9 @@
 .dark {
   background: $veryDarkBlue;
   color: $white;
+  * {
+    color: $white;
+  }
 }
 .light {
   background: $veryLightGray !important;
@@ -32,5 +35,5 @@
   }
 }
 .lightElements {
-  background: $white!important;
+  background: $white !important;
 }

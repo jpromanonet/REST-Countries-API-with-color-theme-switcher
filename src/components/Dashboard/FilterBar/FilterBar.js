@@ -13,7 +13,6 @@ const useOutsideAlerter = (ref, setDropDownFilterStatus) => {
       setDropDownFilterStatus(false);
     }
   };
-
   useEffect(() => {
     // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
