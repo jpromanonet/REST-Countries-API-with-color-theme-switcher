@@ -8,17 +8,18 @@
     justify-content: center;
     width: 100%;
     @media screen and (min-width: 345px) {
-      grid-template-columns: 285px;
+      grid-template-columns: 240px;
     }
     @media screen and (min-width: 715px) {
-      grid-template-columns: 285px 285px;
+      grid-template-columns: 240px 240px;
       justify-content: space-evenly;
     }
     @media screen and(min-width:1110px) {
-      grid-template-columns: 285px 285px 285px;
+      grid-template-columns: 240px 240px 240px;
     }
     @media screen and(min-width:1395px) {
-      grid-template-columns: 285px 285px 285px 285px;
+      grid-template-columns: 255px 255px 255px 255px;
+      column-gap: 25px;
       justify-content: space-between;
     }
   }

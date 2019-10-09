@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Numeral from "numeral";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./CountryDetails.module.scss";
 import NavBar from "../NavBar/NavBar";
 import BorderCountries from "./BorderCountries/BorderCountries";
@@ -10,7 +10,6 @@ class CountryDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalCountries: null,
       countryDetails: null
     };
   }
@@ -21,21 +20,14 @@ class CountryDetails extends Component {
         `https://restcountries.eu/rest/v2/name/${this.props.match.params.countryName}`
       )
       .then(response => {
-        console.log(this.props.match.params.countryName, response.data[0]);
+        // console.log(this.props.match.params.countryName, response.data[0]);
         this.setState(() => ({
-          countryDetails: response.data[0],
-          totalCountries: this.props.totalCountries
+          countryDetails: response.data[0]
         }));
       })
       .catch(error => console.log(error));
   }
   componentDidUpdate(prevProps) {
-    const { totalCountries } = this.props;
-    if (prevProps.totalCountries !== totalCountries) {
-      this.setState(() => {
-        return { totalCountries };
-      });
-    }
     //detect if url key is changing and then update the state based on that
     if (prevProps.location.key !== this.props.location.key) {
       axios
@@ -50,8 +42,8 @@ class CountryDetails extends Component {
   }
 
   render() {
-    const { darkMode, appModeChanger } = this.props;
-    const { countryDetails, totalCountries } = this.state;
+    const { darkMode, appModeChanger, totalCountries } = this.props;
+    const { countryDetails } = this.state;
     return (
       <React.Fragment>
         <header className={styles.countryDetails}>
@@ -89,7 +81,10 @@ class CountryDetails extends Component {
                 ))}
               </React.Fragment>
               {totalCountries && (
-                <BorderCountries {...this.state} darkMode={darkMode} />
+                <BorderCountries
+                  {...{ totalCountries, countryDetails }}
+                  darkMode={darkMode}
+                />
               )}
             </React.Fragment>
           )}

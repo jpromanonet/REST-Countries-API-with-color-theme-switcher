@@ -32,10 +32,8 @@ class App extends Component {
 
   render() {
     const {
-      countries,
       darkMode,
       totalCountries,
-      countrySearchField
     } = this.state;
     return (
       <BrowserRouter>

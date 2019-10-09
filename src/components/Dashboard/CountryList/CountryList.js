@@ -12,11 +12,11 @@ const CountryList = ({ filteredCountries, darkMode }) => {
   // console.log("totalpages--->", totalPages);
   //update totalpages based on the current list of filtered countries
   useEffect(() => {
-    //calculate the number of totalpages if there are more than 12 countries available
+    //calculate the number of totalpages if there are more than 8 countries available
     //otherwise set it to 1
     const tempTotalPages =
-      filteredCountries.length > 12
-        ? Math.ceil(filteredCountries.length / 12)
+      filteredCountries.length > 8
+        ? Math.ceil(filteredCountries.length / 8)
         : 1;
     setTotalPages(tempTotalPages);
   }, [filteredCountries]);
@@ -27,9 +27,9 @@ const CountryList = ({ filteredCountries, darkMode }) => {
   return (
     <section className={styles.countryList}>
       <div>
-        {/* show only 10 countries per page based on the filtered countries */}
+        {/* show only 8 countries per page based on the filtered countries */}
         {filteredCountries
-          .slice(currentPage * 12, currentPage * 12 + 12)
+          .slice(currentPage * 8, currentPage * 8 + 8)
           .map(country => (
             <CountryItem key={country.name} {...country} darkMode={darkMode} />
           ))}
