@@ -37,3 +37,14 @@
 .lightElements {
   background: $white !important;
 }
+//styles for the root element
+//we set the root element as a flex item
+//with this kind of display
+//we can set a specific element take the remaining height of
+//the screen
+// thanks to flex-grow ;)
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

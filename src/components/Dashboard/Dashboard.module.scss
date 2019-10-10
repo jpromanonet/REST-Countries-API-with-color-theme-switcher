@@ -8,4 +8,8 @@
     text-decoration: none !important;
   }
 }
-
+.fillTheReminingHeight {
+  // make the dashboard component take the
+  //remaining height of the viewport
+  flex-grow: 100;
+}

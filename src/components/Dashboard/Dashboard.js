@@ -70,7 +70,7 @@ class Dashboard extends Component {
           />
         </header>
         <main
-          className={`${styles.container} ${styles.dashboard} ${
+          className={`${styles.container} ${styles.dashboard} ${styles.fillTheReminingHeight} ${
             this.props.darkMode ? `dark` : `light`
           }`}
         >
