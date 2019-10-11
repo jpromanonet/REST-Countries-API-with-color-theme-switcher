@@ -9,7 +9,7 @@ class Dashboard extends Component {
     countrySearchField: "",
     regionFilter: ""
   };
-  //update the state as the searchfield is changing
+  //update the state whenever the searchfield changes
   onCountrySearchFieldChange = country => {
     this.setState(
       () => ({ countrySearchField: country }),
@@ -48,11 +48,7 @@ class Dashboard extends Component {
 
   render() {
     // console.log("this is from dashboard", this.props.totalCountries);
-    const {
-      countrySearchField,
-      filteredCountries,
-      regionFilter
-    } = this.state;
+    const { countrySearchField, filteredCountries, regionFilter } = this.state;
     const { totalCountries } = this.props;
     return (
       <React.Fragment>
@@ -70,9 +66,9 @@ class Dashboard extends Component {
           />
         </header>
         <main
-          className={`${styles.container} ${styles.dashboard} ${styles.fillTheReminingHeight} ${
-            this.props.darkMode ? `dark` : `light`
-          }`}
+          className={`${styles.container} ${styles.dashboard} ${
+            styles.fillTheRemainingHeight
+          } ${this.props.darkMode ? `dark` : `light`}`}
         >
           <CountryList
             filteredCountries={

@@ -7,7 +7,7 @@ const borderMaker = (totalCountries, countryDetails, darkMode) => {
   // create the adjacent countries list =>
   //1- check through total countries list for those countries
   //whose alpha3code is included in the borders list of the current country
-  //2-add the country to the borderCountries's list
+  //2-add the country to the borderCountries' list
   let borderCountries = totalCountries.filter(country => {
     return countryDetails.borders.includes(country.alpha3Code);
   });

@@ -15,6 +15,7 @@ class CountryDetails extends Component {
   }
 
   componentDidMount() {
+    //get the necessary data for the current country
     axios
       .get(
         `https://restcountries.eu/rest/v2/name/${this.props.match.params.countryName}`
@@ -28,7 +29,7 @@ class CountryDetails extends Component {
       .catch(error => console.log(error));
   }
   componentDidUpdate(prevProps) {
-    //detect if url key is changing and then update the state based on that
+    //detect if the url key is changing and then update the state based on that
     if (prevProps.location.key !== this.props.location.key) {
       axios
         .get(
@@ -46,12 +47,17 @@ class CountryDetails extends Component {
     const { countryDetails } = this.state;
     return (
       <React.Fragment>
-        <header className={styles.countryDetails}>
+        <header
+          className={`${styles.countryDetails} ${darkMode ? `dark` : `light`}`}
+        >
           <NavBar darkMode={darkMode} appModeChanger={appModeChanger} />
           <Link
             to="/"
-            className={darkMode ? "dark darkElements" : "light lightElements"}
+            className={`${styles.backButton} ${
+              darkMode ? "dark darkElements" : "light lightElements"
+            }`}
           >
+            <i className="fas fa-arrow-left"></i>
             Back
           </Link>
         </header>

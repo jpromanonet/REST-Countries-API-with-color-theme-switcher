@@ -11,7 +11,7 @@ class App extends Component {
     darkMode: true,
     totalCountries: []
   };
-
+//change the darkmode state based on user interaction
   appModeChanger = () => {
     this.setState(prevState => ({ darkMode: !prevState.darkMode }));
   };

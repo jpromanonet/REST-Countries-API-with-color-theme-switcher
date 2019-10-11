@@ -1,4 +1,5 @@
 @import "../../assets/styles/libs/vars";
+@import "../../assets/styles/libs/mixins";
 .countryDetails {
   main {
     font-size: $detailsPage;
@@ -22,4 +23,24 @@
 .light {
   color: $veryDarkBlue--lightMode;
   background: $veryLightGray;
+}
+
+.backButton {
+  @include boxShadowGenerator($normalShadow);
+  display: inline-block;
+  font-size: $shortFontSize;
+  font-weight: $semiBoldFontWeight;
+  margin: 2rem 0 3rem 1.5rem;
+  padding: 0.3rem 1.1rem;
+  text-decoration: none;
+  i {
+    margin-right: 8px;
+    font-size: 14px;
+  }
+  @media screen and (min-width: $tabletBreakPoint) {
+    margin: 4rem 0 4rem 3rem;
+  }
+  @media screen and (min-width: 1395px) {
+    margin-left: 7rem;
+  }
 }
