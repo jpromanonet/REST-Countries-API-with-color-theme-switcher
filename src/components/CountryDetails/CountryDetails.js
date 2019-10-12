@@ -4,6 +4,7 @@ import Numeral from "numeral";
 import { Link } from "react-router-dom";
 import styles from "./CountryDetails.module.scss";
 import NavBar from "../NavBar/NavBar";
+import Loading from "../Loading/Loading";
 import BorderCountries from "./BorderCountries/BorderCountries";
 
 class CountryDetails extends Component {
@@ -66,6 +67,9 @@ class CountryDetails extends Component {
             darkMode ? `dark` : `light`
           }`}
         >
+          {/* if the country details have not been fetched yet -> show loading gif
+              if done-> show the details
+          */}
           {countryDetails ? (
             <React.Fragment>
               <div className={styles.flag}>
@@ -177,7 +181,7 @@ class CountryDetails extends Component {
               </div>
             </React.Fragment>
           ) : (
-            <img src="../../assets/pics/loading.gif" alt="loading" />
+            <Loading darkMode={darkMode} />
           )}
         </main>
       </React.Fragment>

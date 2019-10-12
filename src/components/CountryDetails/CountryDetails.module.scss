@@ -36,6 +36,11 @@
   @media screen and (min-width: 1395px) {
     margin-left: 7rem;
   }
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
 }
 
 .main {
@@ -50,6 +55,7 @@
   }
   @media screen and (min-width: 1200px) {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
   @media screen and (min-width: 1395px) {
@@ -87,6 +93,9 @@
   }
   @media screen and(min-width:$tabletBreakPoint) {
     flex-basis: 50%;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 0;
   }
 }
 

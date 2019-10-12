@@ -3,6 +3,7 @@
 .borderCountries {
   h3 {
     font-weight: $semiBoldFontWeight;
+    margin-right: 20px;
   }
   a {
     @include boxShadowGenerator($normalShadow);
@@ -24,7 +25,7 @@
     margin-top: 3rem;
     h3 {
       width: 160px;
-      margin: 0;
+      margin: 0 20px 0 0;
     }
   }
 }

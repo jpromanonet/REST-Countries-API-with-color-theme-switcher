@@ -74,6 +74,7 @@ class Dashboard extends Component {
             filteredCountries={
               filteredCountries ? filteredCountries : totalCountries
             }
+            totalCountries={totalCountries}
             darkMode={this.props.darkMode}
           />
         </main>
