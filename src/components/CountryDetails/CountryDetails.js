@@ -44,16 +44,16 @@ class CountryDetails extends Component {
   }
 
   render() {
-    const { darkMode, appModeChanger, totalCountries } = this.props;
+    const { darkMode, appModeChanger, totalCountries ,homePage} = this.props;
     const { countryDetails } = this.state;
     return (
       <React.Fragment>
         <header
           className={`${styles.countryDetails} ${darkMode ? `dark` : `light`}`}
         >
-          <NavBar darkMode={darkMode} appModeChanger={appModeChanger} />
+          <NavBar darkMode={darkMode}homePage={homePage} appModeChanger={appModeChanger} />
           <Link
-            to="/"
+            to={homePage}
             className={`${styles.backButton} ${
               darkMode ? "dark darkElements" : "light lightElements"
             }`}
@@ -176,12 +176,13 @@ class CountryDetails extends Component {
                   <BorderCountries
                     {...{ totalCountries, countryDetails }}
                     darkMode={darkMode}
+                    homePage={homePage}
                   />
                 )}
               </div>
             </React.Fragment>
           ) : (
-            <Loading darkMode={darkMode} />
+            <Loading darkMode={darkMode} homePage={homePage} />
           )}
         </main>
       </React.Fragment>

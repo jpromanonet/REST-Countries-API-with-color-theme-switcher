@@ -49,13 +49,14 @@ class Dashboard extends Component {
   render() {
     // console.log("this is from dashboard", this.props.totalCountries);
     const { countrySearchField, filteredCountries, regionFilter } = this.state;
-    const { totalCountries } = this.props;
+    const { totalCountries, homePage } = this.props;
     return (
       <React.Fragment>
         <header className={styles.dashboard}>
           <NavBar
             darkMode={this.props.darkMode}
             appModeChanger={this.props.appModeChanger}
+            homePage={homePage}
           />
           <FilterBar
             countrySearchField={countrySearchField}
@@ -74,6 +75,7 @@ class Dashboard extends Component {
             filteredCountries={
               filteredCountries ? filteredCountries : totalCountries
             }
+            homePage={homePage}
             totalCountries={totalCountries}
             darkMode={this.props.darkMode}
           />

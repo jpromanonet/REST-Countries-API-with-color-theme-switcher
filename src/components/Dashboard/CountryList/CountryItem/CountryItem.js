@@ -3,10 +3,18 @@ import Numeral from "numeral";
 import { Link } from "react-router-dom";
 import styles from "./CountryItem.module.scss";
 
-const CountryItem = ({ capital, darkMode, name, population, region, flag }) => {
+const CountryItem = ({
+  capital,
+  darkMode,
+  name,
+  population,
+  region,
+  flag,
+  homePage
+}) => {
   // console.log("rest", rest);
   return (
-    <Link to={`/${name}`}>
+    <Link to={`${homePage + name}`}>
       <figure
         className={`${styles.countryItem} ${
           darkMode ? `dark darkElements` : `light lightElements`

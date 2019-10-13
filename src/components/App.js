@@ -9,9 +9,14 @@ import NotFound from "./NotFoundPage/NotFound";
 class App extends Component {
   state = {
     darkMode: true,
-    totalCountries: []
+    totalCountries: [],
+    //determine the homepage path based on the development mode
+    homePage:
+      process.env.NODE_ENV === "development"
+        ? "/"
+        : "/REST-Countries-API-with-color-theme-switcher/"
   };
-//change the darkmode state based on user interaction
+  //change the darkmode state based on user interaction
   appModeChanger = () => {
     this.setState(prevState => ({ darkMode: !prevState.darkMode }));
   };
@@ -31,32 +36,33 @@ class App extends Component {
   }
 
   render() {
-    const {
-      darkMode,
-      totalCountries,
-    } = this.state;
+    const { darkMode, totalCountries, homePage } = this.state;
+    console.log(homePage);
+
     return (
       <BrowserRouter>
         <Switch>
           <Route
             exact
-            path="/"
+            path={`${homePage}`}
             render={routeProps => (
               <Dashboard
                 {...routeProps}
                 appModeChanger={this.appModeChanger}
                 darkMode={darkMode}
+                homePage={homePage}
                 totalCountries={totalCountries}
               />
             )}
           ></Route>
           <Route
             exact
-            path="/:countryName"
+            path={`${homePage}:countryName`}
             render={routeProps => (
               <CountryDetails
                 {...routeProps}
                 darkMode={darkMode}
+                homePage={homePage}
                 appModeChanger={this.appModeChanger}
                 totalCountries={totalCountries}
               />

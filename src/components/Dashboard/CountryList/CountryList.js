@@ -5,16 +5,16 @@ import Pagination from "./Pagination/Pagination";
 import styles from "./CountryList.module.scss";
 
 //create courntry  items
-const countryItemCreator = (filteredCountries, currentPage, darkMode) => {
+const countryItemCreator = (filteredCountries, currentPage, darkMode,homePage) => {
   return filteredCountries
     .slice(currentPage * 8, currentPage * 8 + 8)
     .map(country => (
-      <CountryItem key={country.name} {...country} darkMode={darkMode} />
+      <CountryItem key={country.name} {...country} darkMode={darkMode} homePage={homePage} />
     ));
 };
 
 //component declaration
-const CountryList = ({ filteredCountries, darkMode, totalCountries }) => {
+const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage }) => {
   //currentpage,pageCountriesLimit,
   //pagination should have 5 sections ->{<leftNegighbot,currentpage,...,lastPage,rightNeighbor>}
   const [currentPage, setCurrentPage] = useState(0);
@@ -44,7 +44,7 @@ const CountryList = ({ filteredCountries, darkMode, totalCountries }) => {
           <React.Fragment>
             <div>
               {/* show only 8 countries per page based on the filtered countries */}
-              {countryItemCreator(filteredCountries, currentPage, darkMode)}
+              {countryItemCreator(filteredCountries, currentPage, darkMode,homePage)}
             </div>
             <Pagination
               currentPage={currentPage}

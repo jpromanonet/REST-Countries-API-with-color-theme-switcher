@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 
-const NavBar = ({ darkMode, page, appModeChanger }) => (
+const NavBar = ({ darkMode, page, appModeChanger,homePage }) => (
   <>
     <nav
       className={`${styles.container} ${styles.navBar} ${
         darkMode ? `dark darkElements` : `light lightElements`
       }`}
     >
-      <Link to="/" className={styles.bold}>
+      <Link to={homePage} className={styles.bold}>
         Where in the world?
       </Link>
       <button

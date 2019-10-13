@@ -4,7 +4,7 @@ import styles from "./BorderCountries.module.scss";
 
 /* create the adjcent countries list
 based on the borders of the current country */
-const borderMaker = (totalCountries, countryDetails, darkMode) => {
+const borderMaker = (totalCountries, countryDetails, darkMode,homePage) => {
   /*  create the adjacent countries list =>
   1- check through total countries list for those countries
   whose alpha3code is included in the borders list of the current country
@@ -12,11 +12,10 @@ const borderMaker = (totalCountries, countryDetails, darkMode) => {
   let borderCountries = totalCountries.filter(country => {
     return countryDetails.borders.includes(country.alpha3Code);
   });
-
   /* create a seperate link for each country */
   borderCountries = borderCountries.map(country => (
     <Link
-      to={`/${country.name}`}
+      to={`${homePage}${country.name}`}
       key={country.name}
       className={darkMode ? `dark darkElements` : `light lightElements`}
     >
@@ -33,9 +32,9 @@ const borderMaker = (totalCountries, countryDetails, darkMode) => {
     )
   );
 };
-const BorderCountries = ({ totalCountries, countryDetails, darkMode }) => (
+const BorderCountries = ({ totalCountries, countryDetails, darkMode,homePage }) => (
   <div className={darkMode ? "dark" : "light"}>
-    {borderMaker(totalCountries, countryDetails, darkMode)}
+    {borderMaker(totalCountries, countryDetails, darkMode,homePage)}
   </div>
 );
 
