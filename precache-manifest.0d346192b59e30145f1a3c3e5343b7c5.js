@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0678612344041bf42d308a3087ee458f",
+    "revision": "2c914022704e39547acb31f6964b8659",
     "url": "/REST-Countries-API-with-color-theme-switcher/index.html"
   },
   {
-    "revision": "67e6a0dbdcff56d0d4e7",
+    "revision": "949ddd24c045a52cf376",
     "url": "/REST-Countries-API-with-color-theme-switcher/static/css/main.fa348dbd.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/REST-Countries-API-with-color-theme-switcher/static/js/2.12ee4bcb.chunk.js"
   },
   {
-    "revision": "67e6a0dbdcff56d0d4e7",
-    "url": "/REST-Countries-API-with-color-theme-switcher/static/js/main.2f521cde.chunk.js"
+    "revision": "949ddd24c045a52cf376",
+    "url": "/REST-Countries-API-with-color-theme-switcher/static/js/main.bfb7cb9a.chunk.js"
   },
   {
     "revision": "2e2d4472e08cf2b45172",
