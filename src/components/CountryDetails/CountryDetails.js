@@ -19,12 +19,16 @@ class CountryDetails extends Component {
     //get the necessary data for the current country
     axios
       .get(
-        `https://restcountries.eu/rest/v2/name/${this.props.match.params.countryName}`
+        `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
       )
       .then(response => {
         // console.log(this.props.match.params.countryName, response.data[0]);
+        //search for the current country in the countries list
+        const tempCountryDetails = response.data.find(
+          country => country.name === this.props.match.params.countryName
+        );
         this.setState(() => ({
-          countryDetails: response.data[0]
+          countryDetails: tempCountryDetails
         }));
       })
       .catch(error => console.log(error));
@@ -34,24 +38,31 @@ class CountryDetails extends Component {
     if (prevProps.location.key !== this.props.location.key) {
       axios
         .get(
-          `https://restcountries.eu/rest/v2/name/${this.props.match.params.countryName}`
+          `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
         )
         .then(response => {
-          this.setState(() => ({ countryDetails: response.data[0] }));
+          const tempCountryDetails = response.data.find(
+            country => country.name === this.props.match.params.countryName
+          );
+          this.setState(() => ({ countryDetails: tempCountryDetails }));
         })
         .catch(error => console.log(error));
     }
   }
 
   render() {
-    const { darkMode, appModeChanger, totalCountries ,homePage} = this.props;
+    const { darkMode, appModeChanger, totalCountries, homePage } = this.props;
     const { countryDetails } = this.state;
     return (
       <React.Fragment>
         <header
           className={`${styles.countryDetails} ${darkMode ? `dark` : `light`}`}
         >
-          <NavBar darkMode={darkMode}homePage={homePage} appModeChanger={appModeChanger} />
+          <NavBar
+            darkMode={darkMode}
+            homePage={homePage}
+            appModeChanger={appModeChanger}
+          />
           <Link
             to={homePage}
             className={`${styles.backButton} ${
@@ -74,7 +85,7 @@ class CountryDetails extends Component {
             <React.Fragment>
               <div className={styles.flag}>
                 <img
-                  src={countryDetails.flag}
+                  src={`https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/${countryDetails.alpha2Code.toLowerCase()}.svg`}
                   alt={`${countryDetails.name} flag`}
                 />
               </div>

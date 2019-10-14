@@ -23,8 +23,11 @@ class App extends Component {
 
   componentDidMount() {
     // fetch the countrylist data from the api
+
     axios
-      .get(`https://restcountries.eu/rest/v2/all`)
+      .get(
+        `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
+      )
       .then(res => {
         this.setState(() => ({
           totalCountries: res.data
@@ -38,7 +41,7 @@ class App extends Component {
   render() {
     const { darkMode, totalCountries, homePage } = this.state;
     console.log(homePage);
-
+    console.log(totalCountries);
     return (
       <BrowserRouter>
         <Switch>

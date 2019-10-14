@@ -5,6 +5,7 @@ import styles from "./CountryItem.module.scss";
 
 const CountryItem = ({
   capital,
+  alpha2Code,
   darkMode,
   name,
   population,
@@ -22,7 +23,9 @@ const CountryItem = ({
       >
         <div
           className={styles.background}
-          style={{ background: `url(${flag})` }}
+          style={{
+            background: `url(https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/${alpha2Code.toLowerCase()}.svg)`
+          }}
         ></div>
         <figcaption className={styles.textContainer}>
           <h2>{name}</h2>
