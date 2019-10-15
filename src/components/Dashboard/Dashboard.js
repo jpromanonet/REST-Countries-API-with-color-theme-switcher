@@ -4,11 +4,16 @@ import NavBar from "../NavBar/NavBar";
 import FilterBar from "./FilterBar/FilterBar";
 import CountryList from "./CountryList/CountryList";
 class Dashboard extends Component {
-  state = {
-    filteredCountries: null,
-    countrySearchField: "",
-    regionFilter: ""
-  };
+  constructor(props) {
+    super(props);
+    this.scrollTo = React.createRef(null);
+    this.state = {
+      filteredCountries: null,
+      countrySearchField: "",
+      regionFilter: ""
+    };
+  }
+
   //update the state whenever the searchfield changes
   onCountrySearchFieldChange = country => {
     this.setState(
@@ -64,6 +69,7 @@ class Dashboard extends Component {
             regionFilter={regionFilter}
             onCountrySearchFieldChange={this.onCountrySearchFieldChange}
             onRegionChange={this.onRegionChange}
+            scrollTo={this.scrollTo}
           />
         </header>
         <main
@@ -78,6 +84,7 @@ class Dashboard extends Component {
             homePage={homePage}
             totalCountries={totalCountries}
             darkMode={this.props.darkMode}
+            scrollTo={this.scrollTo}
           />
         </main>
         {/* <footer className="dashboard"></footer> */}

@@ -1,21 +1,30 @@
 import React from "react";
 import styles from "./Pagination.module.scss";
 
+//define scoll behavior
+const scroll = scrollTo => {
+  scrollTo.current.scrollIntoView({ behavior: "smooth" });
+};
+
 //declare constants for determining the current situation for setCurrentPage function
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
+
 //setCurrentPage based on user interactions
 const onSetCurrentPage = (
   setCurrentPage,
   currentPage,
-  pageNumberChangingStatus
+  pageNumberChangingStatus,
+  scrollTo
 ) => {
   switch (pageNumberChangingStatus) {
     case INCREMENT: {
+      scroll(scrollTo);
       setCurrentPage(currentPage + 1);
       break;
     }
     case DECREMENT: {
+      scroll(scrollTo);
       setCurrentPage(currentPage - 1);
       break;
     }
@@ -27,13 +36,20 @@ const onSetCurrentPage = (
 const firstAndLastPagesPagination = (
   currentPage,
   totalPages,
-  setCurrentPage
+  setCurrentPage,
+  scrollTo
 ) => {
   return (
     <React.Fragment>
       <button
         onClick={
-          currentPage + 1 === totalPages ? () => setCurrentPage(0) : undefined
+          //only run the click event when we're on the last page
+          currentPage + 1 === totalPages
+            ? () => {
+                setCurrentPage(0);
+                scroll(scrollTo);
+              }
+            : undefined
         }
         className={currentPage === 0 ? styles.isActive : undefined}
       >
@@ -44,8 +60,12 @@ const firstAndLastPagesPagination = (
       </button>
       <button
         onClick={
+          //only run the click event when we're on the first page
           currentPage + 1 === 1
-            ? () => setCurrentPage(totalPages - 1)
+            ? () => {
+                setCurrentPage(totalPages - 1);
+                scroll(scrollTo);
+              }
             : undefined
         }
         className={currentPage + 1 === totalPages ? styles.isActive : undefined}
@@ -59,11 +79,19 @@ const firstAndLastPagesPagination = (
 const paginationForSecondAndOneBeforeLastPage = (
   currentPage,
   totalPages,
-  setCurrentPage
+  setCurrentPage,
+  scrollTo
 ) => {
   return (
     <React.Fragment>
-      <button onClick={() => setCurrentPage(0)}>1</button>
+      <button
+        onClick={() => {
+          setCurrentPage(0);
+          scroll(scrollTo);
+        }}
+      >
+        1
+      </button>
       {currentPage + 1 === 2 ? (
         //2nd page's buttons
         <React.Fragment>
@@ -81,7 +109,12 @@ const paginationForSecondAndOneBeforeLastPage = (
           <button className={styles.isActive}>{totalPages - 1}</button>
         </React.Fragment>
       )}
-      <button onClick={() => setCurrentPage(totalPages - 1)}>
+      <button
+        onClick={() => {
+          setCurrentPage(totalPages - 1);
+          scroll(scrollTo);
+        }}
+      >
         {totalPages}
       </button>
     </React.Fragment>
@@ -91,7 +124,8 @@ const paginationForSecondAndOneBeforeLastPage = (
 const paginationMiddleSectionCreator = (
   currentPage,
   totalPages,
-  setCurrentPage
+  setCurrentPage,
+  scrollTo
 ) => {
   //if there is only one page available
   if (totalPages === 1) {
@@ -104,7 +138,8 @@ const paginationMiddleSectionCreator = (
       return firstAndLastPagesPagination(
         currentPage,
         totalPages,
-        setCurrentPage
+        setCurrentPage,
+        scrollTo
       );
     }
     // create pagination buttons for 2nd and n-1st page
@@ -113,14 +148,22 @@ const paginationMiddleSectionCreator = (
       return paginationForSecondAndOneBeforeLastPage(
         currentPage,
         totalPages,
-        setCurrentPage
+        setCurrentPage,
+        scrollTo
       );
     }
     //create pagination buttons for the middle ones
     default: {
       return (
         <React.Fragment>
-          <button onClick={() => setCurrentPage(0)}>1</button>
+          <button
+            onClick={() => {
+              setCurrentPage(0);
+              scroll(scrollTo);
+            }}
+          >
+            1
+          </button>
           <button className={styles.elipsis}>
             <i className="fas fa-ellipsis-h"></i>
           </button>
@@ -128,7 +171,12 @@ const paginationMiddleSectionCreator = (
           <button className={styles.elipsis}>
             <i className="fas fa-ellipsis-h"></i>
           </button>
-          <button onClick={() => setCurrentPage(totalPages - 1)}>
+          <button
+            onClick={() => {
+              setCurrentPage(totalPages - 1);
+              scroll(scrollTo);
+            }}
+          >
             {totalPages}
           </button>
         </React.Fragment>
@@ -138,21 +186,36 @@ const paginationMiddleSectionCreator = (
 };
 
 //component declaration
-const Pagination = ({ darkMode, currentPage, setCurrentPage, totalPages }) => {
+const Pagination = ({
+  darkMode,
+  currentPage,
+  setCurrentPage,
+  totalPages,
+  scrollTo
+}) => {
   return (
     <div className={`${styles.pagination} ${darkMode ? `dark ` : `light `}`}>
       {/* disable next and previous page buttons whenever there is only 1 page available */}
       <button
-        onClick={() => onSetCurrentPage(setCurrentPage, currentPage, DECREMENT)}
+        onClick={() => {
+          onSetCurrentPage(setCurrentPage, currentPage, DECREMENT, scrollTo);
+        }}
         disabled={currentPage === 0}
       >
         <i className="fas fa-arrow-left"></i>
       </button>
       {/* create the middle buttons for pagination component, based on the currentPage */}
-      {paginationMiddleSectionCreator(currentPage, totalPages, setCurrentPage)}
+      {paginationMiddleSectionCreator(
+        currentPage,
+        totalPages,
+        setCurrentPage,
+        scrollTo
+      )}
       <button
         className={styles.nextPage}
-        onClick={() => onSetCurrentPage(setCurrentPage, currentPage, INCREMENT)}
+        onClick={() => {
+          onSetCurrentPage(setCurrentPage, currentPage, INCREMENT, scrollTo);
+        }}
         disabled={currentPage + 1 === totalPages}
       >
         <i className="fas fa-arrow-left"></i>

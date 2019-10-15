@@ -7,14 +7,17 @@ import CountryDetails from "./CountryDetails/CountryDetails";
 import NotFound from "./NotFoundPage/NotFound";
 
 class App extends Component {
-  state = {
-    darkMode: true,
-    totalCountries: [],
+  constructor(props) {
+    super(props);
     //determine the homepage path based on the development mode
-    homePage:
+    this.homePage =
       process.env.NODE_ENV === "development"
         ? "/"
-        : "/REST-Countries-API-with-color-theme-switcher/"
+        : "/REST-Countries-API-with-color-theme-switcher/";
+  }
+  state = {
+    darkMode: true,
+    totalCountries: []
   };
   //change the darkmode state based on user interaction
   appModeChanger = () => {
@@ -23,7 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     // fetch the countrylist data from the api
-
+    // we saved the json file in another repository on github cause the original api was blocked on iran's network
     axios
       .get(
         `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
@@ -39,33 +42,33 @@ class App extends Component {
   }
 
   render() {
-    const { darkMode, totalCountries, homePage } = this.state;
-    console.log(homePage);
+    const { darkMode, totalCountries } = this.state;
+    console.log(this.homePage);
     console.log(totalCountries);
     return (
       <BrowserRouter>
         <Switch>
           <Route
             exact
-            path={`${homePage}`}
+            path={`${this.homePage}`}
             render={routeProps => (
               <Dashboard
                 {...routeProps}
                 appModeChanger={this.appModeChanger}
                 darkMode={darkMode}
-                homePage={homePage}
+                homePage={this.homePage}
                 totalCountries={totalCountries}
               />
             )}
           ></Route>
           <Route
             exact
-            path={`${homePage}:countryName`}
+            path={`${this.homePage}:countryName`}
             render={routeProps => (
               <CountryDetails
                 {...routeProps}
                 darkMode={darkMode}
-                homePage={homePage}
+                homePage={this.homePage}
                 appModeChanger={this.appModeChanger}
                 totalCountries={totalCountries}
               />

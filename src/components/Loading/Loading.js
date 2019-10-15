@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loading = ({ darkMode, homePage }) => (
+const Loading = ({ darkMode }) => (
   <img
     className="loadingGif"
     src={`./assets/pics/loading--${darkMode ? `dark` : `light`}.svg`}

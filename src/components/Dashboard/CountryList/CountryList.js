@@ -14,7 +14,7 @@ const countryItemCreator = (filteredCountries, currentPage, darkMode,homePage) =
 };
 
 //component declaration
-const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage }) => {
+const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage ,scrollTo}) => {
   //currentpage,pageCountriesLimit,
   //pagination should have 5 sections ->{<leftNegighbot,currentpage,...,lastPage,rightNeighbor>}
   const [currentPage, setCurrentPage] = useState(0);
@@ -49,6 +49,7 @@ const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage }) =
             <Pagination
               currentPage={currentPage}
               darkMode={darkMode}
+              scrollTo={scrollTo}
               setCurrentPage={setCurrentPage}
               totalPages={totalPages}
             />

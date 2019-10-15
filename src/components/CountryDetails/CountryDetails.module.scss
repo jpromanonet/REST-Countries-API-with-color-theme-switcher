@@ -26,6 +26,7 @@
   margin: 2rem 0 3rem 1.5rem;
   padding: 0.6rem 1.6rem;
   text-decoration: none;
+  transition: transform 0.1s ease-in-out;
   i {
     margin-right: 8px;
     font-size: 14px;
@@ -36,12 +37,9 @@
   @media screen and (min-width: 1395px) {
     margin-left: 7rem;
   }
-  @media (hover: hover) {
+  @media screen and (hover: hover) {
     &:hover {
-      transform: scale(1.5);
-    }
-    &:active {
-      color: red;
+      font-weight: $extraBoldFontWeight;
     }
   }
 }
