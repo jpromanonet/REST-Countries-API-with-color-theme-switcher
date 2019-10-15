@@ -1,6 +1,15 @@
 @import "../../assets/styles/libs/vars";
 @import "../../assets/styles/base/base";
 @import "../../assets/styles/libs/mixins";
+
+.bold {
+  font-weight: $extraBoldFontWeight;
+}
+
+.semiBold {
+  font-weight: $lightFontWeight;
+}
+
 .navBar {
   @include boxShadowGenerator($normalShadow);
   display: flex;
@@ -12,6 +21,9 @@
   padding-left: 1.2rem;
   position: relative;
   z-index: 1;
+  >*{
+    transition: transform 0.1s ease-in;
+  }
   a:first-of-type {
     font-size: 14px;
     color: inherit;
@@ -44,12 +56,9 @@
     padding-left: 7rem;
     padding-right: 7rem;
   }
-}
-
-.bold {
-  font-weight: $extraBoldFontWeight;
-}
-
-.semiBold {
-  font-weight: $lightFontWeight;
+  @media screen and (hover: hover) {
+    a:hover ,button:hover{
+      transform: scale(1.05);
+    }
+  }
 }
