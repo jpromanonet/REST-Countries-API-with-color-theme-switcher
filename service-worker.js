@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/REST-Countries-API-with-color-theme-switcher/precache-manifest.46507c3cd1e8365b10251ba21ba6e6ef.js"
+  "/REST-Countries-API-with-color-theme-switcher/precache-manifest.902d366bbb4905a086b12564af754e93.js"
 );
 
 self.addEventListener('message', (event) => {
