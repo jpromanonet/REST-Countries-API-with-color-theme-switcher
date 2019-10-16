@@ -80,15 +80,14 @@
       outline: none;
       margin-right: 10px;
       animation-name: rotate;
-      animation-duration: 0.5s;
+      animation-duration: 0.3s;
       animation-iteration-count: 1;
     }
     ul {
       margin-top: 5px;
       padding: 0;
       animation-name: dropDown;
-      animation-duration: 0.5s;
-      animation-iteration-count: 1;
+      animation-duration: 0.3s;
       overflow: hidden;
       li {
         cursor: pointer;
