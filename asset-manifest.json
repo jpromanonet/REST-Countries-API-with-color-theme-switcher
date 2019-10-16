@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/REST-Countries-API-with-color-theme-switcher/static/css/main.cf510d10.chunk.css",
-    "main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/main.c9099aed.chunk.js",
-    "main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/main.c9099aed.chunk.js.map",
+    "main.css": "/REST-Countries-API-with-color-theme-switcher/static/css/main.cf3ef2cf.chunk.css",
+    "main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/main.97d33e7a.chunk.js",
+    "main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/main.97d33e7a.chunk.js.map",
     "runtime~main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/runtime~main.5947ff85.js",
     "runtime~main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/runtime~main.5947ff85.js.map",
-    "static/js/2.12ee4bcb.chunk.js": "/REST-Countries-API-with-color-theme-switcher/static/js/2.12ee4bcb.chunk.js",
-    "static/js/2.12ee4bcb.chunk.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/2.12ee4bcb.chunk.js.map",
+    "static/js/2.5e0c88e9.chunk.js": "/REST-Countries-API-with-color-theme-switcher/static/js/2.5e0c88e9.chunk.js",
+    "static/js/2.5e0c88e9.chunk.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/2.5e0c88e9.chunk.js.map",
     "index.html": "/REST-Countries-API-with-color-theme-switcher/index.html",
-    "precache-manifest.bca3220c96ca59b3c409cb6319be0dd6.js": "/REST-Countries-API-with-color-theme-switcher/precache-manifest.bca3220c96ca59b3c409cb6319be0dd6.js",
+    "precache-manifest.56dbe1ce2968261242804cb24471f65d.js": "/REST-Countries-API-with-color-theme-switcher/precache-manifest.56dbe1ce2968261242804cb24471f65d.js",
     "service-worker.js": "/REST-Countries-API-with-color-theme-switcher/service-worker.js",
-    "static/css/main.cf510d10.chunk.css.map": "/REST-Countries-API-with-color-theme-switcher/static/css/main.cf510d10.chunk.css.map"
+    "static/css/main.cf3ef2cf.chunk.css.map": "/REST-Countries-API-with-color-theme-switcher/static/css/main.cf3ef2cf.chunk.css.map"
   }
 }
