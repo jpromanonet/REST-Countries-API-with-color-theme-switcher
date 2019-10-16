@@ -15,7 +15,7 @@ const CountryItem = ({
 }) => {
   // console.log("rest", rest);
   return (
-    <Link to={`${homePage + name}`}>
+    <Link to={`${homePage}countries/${name}`}>
       <figure
         className={`${styles.countryItem} ${
           darkMode ? `dark darkElements` : `light lightElements`

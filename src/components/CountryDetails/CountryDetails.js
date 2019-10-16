@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Numeral from "numeral";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import styles from "./CountryDetails.module.scss";
 import NavBar from "../NavBar/NavBar";
 import Loading from "../Loading/Loading";
@@ -11,9 +11,15 @@ class CountryDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      countryDetails: null
+      countryDetails: null,
+      notFoundStatus: false
     };
   }
+
+  //redirect function
+  onRedirect = () => {
+    return this.state.redirect && <Redirect to="/404" />;
+  };
 
   componentDidMount() {
     //get the necessary data for the current country
@@ -27,9 +33,13 @@ class CountryDetails extends Component {
         const tempCountryDetails = response.data.find(
           country => country.name === this.props.match.params.countryName
         );
-        this.setState(() => ({
-          countryDetails: tempCountryDetails
-        }));
+        if (tempCountryDetails) {
+          this.setState(() => ({
+            countryDetails: tempCountryDetails
+          }));
+        } else {
+          this.setState(() => ({ countryDetails: true, notFoundStatus: true }));
+        }
       })
       .catch(error => console.log(error));
   }
@@ -52,7 +62,7 @@ class CountryDetails extends Component {
 
   render() {
     const { darkMode, appModeChanger, totalCountries, homePage } = this.props;
-    const { countryDetails } = this.state;
+    const { countryDetails, notFoundStatus } = this.state;
     return (
       <React.Fragment>
         <header
@@ -82,116 +92,126 @@ class CountryDetails extends Component {
               if done-> show the details
           */}
           {countryDetails ? (
-            <React.Fragment>
-              <div className={styles.flag}>
-                <img
-                  src={`https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/${countryDetails.alpha2Code.toLowerCase()}.svg`}
-                  alt={`${countryDetails.name} flag`}
-                />
-              </div>
-              <div className={styles.details}>
-                <h1> {this.props.match.params.countryName}</h1>
-                <div className={styles.detailsContainer}>
-                  <div className={styles.mainDetails}>
-                    <p>
-                      Native Name:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {countryDetails.nativeName}{" "}
-                      </span>
-                    </p>
-                    <p>
-                      Population:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {Numeral(countryDetails.population).format(0, 0)}
-                      </span>
-                    </p>
-                    <p>
-                      Region:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {countryDetails.region}
-                      </span>
-                    </p>
-                    <p>
-                      Sub Region:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {" "}
-                        {countryDetails.subregion}
-                      </span>
-                    </p>
-                    <p>
-                      Capital:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {" "}
-                        {countryDetails.capital}
-                      </span>
-                    </p>
-                  </div>
-                  <div className={styles.additionalDetails}>
-                    <p>
-                      Top Level Domain:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {countryDetails.topLevelDomain}
-                      </span>
-                    </p>
-                    <p>
-                      Currencies:{" "}
-                      <span
-                        className={
-                          darkMode ? styles.darkDetails : styles.lightDetails
-                        }
-                      >
-                        {" "}
-                        {countryDetails.currencies[0].name}
-                      </span>
-                    </p>
-                    <p className={styles.languages}>
-                      Languages :
-                      {countryDetails.languages.map(({ name }) => (
+            /* show a message if the country ain't available in our database,
+            otherwise show the content */
+            notFoundStatus ? (
+              <p className={styles.error}>
+                sorry we we have no idea about the thing you're looking for
+              </p>
+            ) : (
+              <React.Fragment>
+                <div className={styles.flag}>
+                  <img
+                    src={`https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/${countryDetails.alpha2Code.toLowerCase()}.svg`}
+                    alt={`${countryDetails.name} flag`}
+                  />
+                </div>
+                <div className={styles.details}>
+                  <h1> {this.props.match.params.countryName}</h1>
+                  <div className={styles.detailsContainer}>
+                    <div className={styles.mainDetails}>
+                      <p>
+                        Native Name:{" "}
                         <span
                           className={
                             darkMode ? styles.darkDetails : styles.lightDetails
                           }
-                          key={name}
                         >
-                          {name}
+                          {countryDetails.nativeName}{" "}
                         </span>
-                      ))}
-                    </p>
+                      </p>
+                      <p>
+                        Population:{" "}
+                        <span
+                          className={
+                            darkMode ? styles.darkDetails : styles.lightDetails
+                          }
+                        >
+                          {Numeral(countryDetails.population).format(0, 0)}
+                        </span>
+                      </p>
+                      <p>
+                        Region:{" "}
+                        <span
+                          className={
+                            darkMode ? styles.darkDetails : styles.lightDetails
+                          }
+                        >
+                          {countryDetails.region}
+                        </span>
+                      </p>
+                      <p>
+                        Sub Region:{" "}
+                        <span
+                          className={
+                            darkMode ? styles.darkDetails : styles.lightDetails
+                          }
+                        >
+                          {" "}
+                          {countryDetails.subregion}
+                        </span>
+                      </p>
+                      <p>
+                        Capital:{" "}
+                        <span
+                          className={
+                            darkMode ? styles.darkDetails : styles.lightDetails
+                          }
+                        >
+                          {" "}
+                          {countryDetails.capital}
+                        </span>
+                      </p>
+                    </div>
+                    <div className={styles.additionalDetails}>
+                      <p>
+                        Top Level Domain:{" "}
+                        <span
+                          className={
+                            darkMode ? styles.darkDetails : styles.lightDetails
+                          }
+                        >
+                          {countryDetails.topLevelDomain}
+                        </span>
+                      </p>
+                      <p>
+                        Currencies:{" "}
+                        <span
+                          className={
+                            darkMode ? styles.darkDetails : styles.lightDetails
+                          }
+                        >
+                          {" "}
+                          {countryDetails.currencies[0].name}
+                        </span>
+                      </p>
+                      <p className={styles.languages}>
+                        Languages :
+                        {countryDetails.languages.map(({ name }) => (
+                          <span
+                            className={
+                              darkMode
+                                ? styles.darkDetails
+                                : styles.lightDetails
+                            }
+                            key={name}
+                          >
+                            {name}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
                   </div>
+                  {totalCountries && (
+                    <BorderCountries
+                      {...{ totalCountries, countryDetails }}
+                      darkMode={darkMode}
+                      homePage={homePage}
+                    />
+                  )}
                 </div>
-                {totalCountries && (
-                  <BorderCountries
-                    {...{ totalCountries, countryDetails }}
-                    darkMode={darkMode}
-                    homePage={homePage}
-                  />
-                )}
-              </div>
-            </React.Fragment>
+              </React.Fragment>
+            )
           ) : (
             <Loading darkMode={darkMode} homePage={homePage} />
           )}

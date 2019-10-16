@@ -63,7 +63,7 @@ class App extends Component {
           ></Route>
           <Route
             exact
-            path={`${this.homePage}:countryName`}
+            path={`${this.homePage}countries/:countryName`}
             render={routeProps => (
               <CountryDetails
                 {...routeProps}
@@ -74,7 +74,11 @@ class App extends Component {
               />
             )}
           />
-          <Route component={NotFound} />
+          <Route
+            render={routeProps => (
+              <NotFound {...routeProps} darkMode={darkMode} homePage={this.homePage}/>
+            )}
+          />
         </Switch>
       </BrowserRouter>
     );
