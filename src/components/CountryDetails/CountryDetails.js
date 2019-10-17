@@ -22,8 +22,7 @@ class CountryDetails extends Component {
   };
 
   componentDidMount() {
-    //set the document's title based on the current country
-    document.title = this.props.match.params.countryName;
+    
     //get the necessary data for the current country
     axios
       .get(
@@ -46,6 +45,8 @@ class CountryDetails extends Component {
       .catch(error => console.log(error));
   }
   componentDidUpdate(prevProps) {
+    //set the document's title based on the current country
+    document.title = this.props.match.params.countryName;
     //detect if the url key is changing and then update the state based on that
     if (prevProps.location.key !== this.props.location.key) {
       axios
