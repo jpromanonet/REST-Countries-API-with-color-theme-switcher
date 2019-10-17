@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/REST-Countries-API-with-color-theme-switcher/static/css/main.99074e2e.chunk.css",
-    "main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/main.d04ee6ae.chunk.js",
-    "main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/main.d04ee6ae.chunk.js.map",
+    "main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/main.8637155f.chunk.js",
+    "main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/main.8637155f.chunk.js.map",
     "runtime~main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/runtime~main.5947ff85.js",
     "runtime~main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/runtime~main.5947ff85.js.map",
     "static/js/2.5e0c88e9.chunk.js": "/REST-Countries-API-with-color-theme-switcher/static/js/2.5e0c88e9.chunk.js",
     "static/js/2.5e0c88e9.chunk.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/2.5e0c88e9.chunk.js.map",
     "index.html": "/REST-Countries-API-with-color-theme-switcher/index.html",
-    "precache-manifest.643c3dcc949e87106e2ee7b5279ceb89.js": "/REST-Countries-API-with-color-theme-switcher/precache-manifest.643c3dcc949e87106e2ee7b5279ceb89.js",
+    "precache-manifest.f0687d7028600e678ceacf683630df66.js": "/REST-Countries-API-with-color-theme-switcher/precache-manifest.f0687d7028600e678ceacf683630df66.js",
     "service-worker.js": "/REST-Countries-API-with-color-theme-switcher/service-worker.js",
     "static/css/main.99074e2e.chunk.css.map": "/REST-Countries-API-with-color-theme-switcher/static/css/main.99074e2e.chunk.css.map"
   }
