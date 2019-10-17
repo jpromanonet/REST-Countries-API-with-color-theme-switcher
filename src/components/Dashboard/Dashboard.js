@@ -51,6 +51,11 @@ class Dashboard extends Component {
     });
   };
 
+  componentDidMount() {
+    //update the document's title
+    document.title = "Where in the World ?";
+  }
+
   render() {
     // console.log("this is from dashboard", this.props.totalCountries);
     const { countrySearchField, filteredCountries, regionFilter } = this.state;

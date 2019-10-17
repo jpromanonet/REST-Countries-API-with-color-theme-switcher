@@ -22,6 +22,8 @@ class CountryDetails extends Component {
   };
 
   componentDidMount() {
+    //set the document's title based on the current country
+    document.title = this.props.match.params.countryName;
     //get the necessary data for the current country
     axios
       .get(
