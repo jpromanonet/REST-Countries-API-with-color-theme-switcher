@@ -22,7 +22,6 @@ class CountryDetails extends Component {
   };
 
   componentDidMount() {
-    
     //get the necessary data for the current country
     axios
       .get(

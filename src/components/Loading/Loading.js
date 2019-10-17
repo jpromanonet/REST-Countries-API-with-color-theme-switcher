@@ -3,7 +3,9 @@ import React from "react";
 const Loading = ({ darkMode }) => (
   <img
     className="loadingGif"
-    src={`/assets/pics/loading--${darkMode ? `dark` : `light`}.svg`}
+    src={`${process.env.PUBLIC_URL}/assets/pics/loading--${
+      darkMode ? `dark` : `light`
+    }.svg`}
     alt="loading"
   />
 );
