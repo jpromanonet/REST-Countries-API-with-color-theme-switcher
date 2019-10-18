@@ -11,7 +11,7 @@ a React web app using the countries RESTFUL api
 * JavaScript
     * Reactjs(Hooks,...)
     * axios
-# My Soltion
+# My Solution
 [Link](https://sinamoraddar.github.io/REST-Countries-API-with-color-theme-switcher/)
 
 ### This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
