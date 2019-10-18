@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/REST-Countries-API-with-color-theme-switcher/static/css/main.3f810e64.chunk.css",
-    "main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/main.902d30b8.chunk.js",
-    "main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/main.902d30b8.chunk.js.map",
+    "main.css": "/REST-Countries-API-with-color-theme-switcher/static/css/main.74aae72c.chunk.css",
+    "main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/main.a98da945.chunk.js",
+    "main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/main.a98da945.chunk.js.map",
     "runtime~main.js": "/REST-Countries-API-with-color-theme-switcher/static/js/runtime~main.5947ff85.js",
     "runtime~main.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/runtime~main.5947ff85.js.map",
     "static/js/2.fb3925e8.chunk.js": "/REST-Countries-API-with-color-theme-switcher/static/js/2.fb3925e8.chunk.js",
     "static/js/2.fb3925e8.chunk.js.map": "/REST-Countries-API-with-color-theme-switcher/static/js/2.fb3925e8.chunk.js.map",
     "index.html": "/REST-Countries-API-with-color-theme-switcher/index.html",
-    "precache-manifest.db25583cebbcddf81d5d0cc1538446ff.js": "/REST-Countries-API-with-color-theme-switcher/precache-manifest.db25583cebbcddf81d5d0cc1538446ff.js",
+    "precache-manifest.b6bfc35bb6edfc32b881c786e0412bea.js": "/REST-Countries-API-with-color-theme-switcher/precache-manifest.b6bfc35bb6edfc32b881c786e0412bea.js",
     "service-worker.js": "/REST-Countries-API-with-color-theme-switcher/service-worker.js",
-    "static/css/main.3f810e64.chunk.css.map": "/REST-Countries-API-with-color-theme-switcher/static/css/main.3f810e64.chunk.css.map"
+    "static/css/main.74aae72c.chunk.css.map": "/REST-Countries-API-with-color-theme-switcher/static/css/main.74aae72c.chunk.css.map"
   }
 }
