@@ -5,6 +5,7 @@ a React web app using the countries RESTFUL api
 * HTML
 * CSS
     * sass
+    * **css in js ->css modules**
     * grid & flexbox
     * **no css framework was used**
     * made with **mobile first design concepts**
