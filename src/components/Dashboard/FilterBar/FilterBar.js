@@ -28,7 +28,8 @@ const FilterBar = ({
   darkMode,
   regionFilter,
   onCountrySearchFieldChange,
-  onRegionChange,scrollTo
+  onRegionChange,
+  scrollTo
 }) => {
   const [dropDownFilterStatus, setDropDownFilterStatus] = useState(false);
   // using react ref for detecting a click outside of region filter's dropdown menu
@@ -36,7 +37,7 @@ const FilterBar = ({
   useOutsideAlerter(wrapperRef, setDropDownFilterStatus);
   return (
     <div
-    ref={scrollTo}
+      ref={scrollTo}
       className={`${styles.filterBar} ${styles.container} ${
         darkMode ? `dark` : `light`
       }`}

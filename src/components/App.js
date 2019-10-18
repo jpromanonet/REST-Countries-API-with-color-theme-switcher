@@ -43,8 +43,8 @@ class App extends Component {
 
   render() {
     const { darkMode, totalCountries } = this.state;
-    console.log(this.homePage);
-    console.log(totalCountries);
+    // console.log(this.homePage);
+    // console.log(totalCountries);
     return (
       <BrowserRouter>
         <Switch>
