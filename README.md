@@ -12,6 +12,7 @@ a React web app using the countries RESTFUL api
 * JavaScript
     * Reactjs(Hooks,...)
     * axios
+    * made it **PWA** with the help of *Create React App*
 # My Solution
 [Link](https://sinamoraddar.github.io/REST-Countries-API-with-color-theme-switcher/)
 
