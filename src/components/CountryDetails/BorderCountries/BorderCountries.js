@@ -25,20 +25,22 @@ const borderMaker = (totalCountries, countryDetails, darkMode, homePage) => {
   /* only return the list when the list isn't empty */
   return (
     borderCountries.length !== 0 && (
-      <div className={styles.borderCountries}>
+      <React.Fragment>
         <h3>Border Countries: </h3>
         <div> {borderCountries}</div>
-      </div>
+      </React.Fragment>
     )
   );
 };
+
+//COMPONENT DECLARATION
 const BorderCountries = ({
   totalCountries,
   countryDetails,
   darkMode,
   homePage
 }) => (
-  <div className={darkMode ? "dark" : "light"}>
+  <div className={`${styles.borderCountries} ${darkMode ? "dark" : "light"}`}>
     {borderMaker(totalCountries, countryDetails, darkMode, homePage)}
   </div>
 );

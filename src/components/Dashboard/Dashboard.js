@@ -6,6 +6,7 @@ import CountryList from "./CountryList/CountryList";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    /* create a ref for scrolling functionality */
     this.scrollTo = React.createRef(null);
     this.state = {
       filteredCountries: null,
@@ -52,12 +53,11 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    //update the document's title
+    //update the document's title right after the component is mounted
     document.title = "Where in the World ?";
   }
 
   render() {
-    // console.log("this is from dashboard", this.props.totalCountries);
     const { countrySearchField, filteredCountries, regionFilter } = this.state;
     const { totalCountries, homePage } = this.props;
     return (
@@ -92,7 +92,6 @@ class Dashboard extends Component {
             scrollTo={this.scrollTo}
           />
         </main>
-        {/* <footer className="dashboard"></footer> */}
       </React.Fragment>
     );
   }

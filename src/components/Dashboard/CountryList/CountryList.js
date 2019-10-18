@@ -6,6 +6,7 @@ import styles from "./CountryList.module.scss";
 
 //create courntry  items
 const countryItemCreator = (filteredCountries, currentPage, darkMode,homePage) => {
+  //create the items by mapping over the filtered countries
   return filteredCountries
     .slice(currentPage * 8, currentPage * 8 + 8)
     .map(country => (
@@ -15,11 +16,11 @@ const countryItemCreator = (filteredCountries, currentPage, darkMode,homePage) =
 
 //component declaration
 const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage ,scrollTo}) => {
-  //currentpage,pageCountriesLimit,
-  //pagination should have 5 sections ->{<leftNegighbot,currentpage,...,lastPage,rightNeighbor>}
+  //declare the state properties using react hooks
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
-  //update totalpages based on the current list of filtered countries
+
+  //update totalpages whenever the filterd countries' list changes
   useEffect(() => {
     //calculate the number of totalpages if there are more than 8 countries available
     //otherwise set it to 1
@@ -29,7 +30,7 @@ const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage ,scr
         : 1;
     setTotalPages(tempTotalPages);
   }, [filteredCountries]);
-  //update the currentPage whenever the filteredcountries changes
+  //update the currentPage whenever the filteredcountries' list changes
   useEffect(() => {
     setCurrentPage(0);
   }, [filteredCountries]);
@@ -37,18 +38,19 @@ const CountryList = ({ filteredCountries, darkMode, totalCountries,homePage ,scr
     <section className={styles.countryList}>
       {/* check if the countries have yet been fetched or not
         if not->show loading gif
-        if done->show the countries list
+        if they did->show the countries list
       */}
       {totalCountries.length > 0 ? (
         filteredCountries.length !== 0 ? (
           <React.Fragment>
             <div>
-              {/* show only 8 countries per page based on the filtered countries */}
+              {/* show only 8 countries per page based on the filtered countries' list*/}
               {countryItemCreator(filteredCountries, currentPage, darkMode,homePage)}
             </div>
             <Pagination
               currentPage={currentPage}
               darkMode={darkMode}
+              /* we use scollTo ref for the auto scoll behavior */
               scrollTo={scrollTo}
               setCurrentPage={setCurrentPage}
               totalPages={totalPages}

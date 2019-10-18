@@ -9,6 +9,7 @@
   color: $darkGray;
 }
 
+//dark/light stylings for the app's theme
 .dark {
   background: $veryDarkBlue;
   color: $white;
@@ -37,18 +38,18 @@
 .lightElements {
   background: $white !important;
 }
-//styles for the root element
-//we set the root element as a flex item
-//with this kind of display
-//we can set a specific element take the remaining height of
-//the screen
-// thanks to flex-grow ;)
+/* styles for the root element
+we set the root element as a flex item
+with this kind of display
+we can set a specific element take the remaining height of
+the screen
+thanks to flex-grow ;) */
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-//loading gif styling
+//loading gif's styling
 .loadingGif {
   width: 64px !important;
   height: 64px !important;

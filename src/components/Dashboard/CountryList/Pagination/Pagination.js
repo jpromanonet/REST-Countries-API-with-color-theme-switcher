@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Pagination.module.scss";
 
-//define scoll behavior
+//scrolling functionality
 const scroll = scrollTo => {
   scrollTo.current.scrollIntoView({ behavior: "smooth" });
 };
@@ -10,7 +10,7 @@ const scroll = scrollTo => {
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 
-//setCurrentPage based on user interactions
+//setCurrentPage based on the state of the left and right buttons of the pagination
 const onSetCurrentPage = (
   setCurrentPage,
   currentPage,
@@ -51,7 +51,8 @@ const firstAndLastPagesPagination = (
               }
             : undefined
         }
-        className={currentPage === 0 ? styles.isActive : undefined}
+        
+        /* conditionally set the active class for the button */className={currentPage === 0 ? styles.isActive : undefined}
       >
         1
       </button>
@@ -68,6 +69,7 @@ const firstAndLastPagesPagination = (
               }
             : undefined
         }
+        /* conditionally set the active class for the button */
         className={currentPage + 1 === totalPages ? styles.isActive : undefined}
       >
         {totalPages}

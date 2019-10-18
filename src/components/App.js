@@ -25,8 +25,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // fetch the countrylist data from the api
-    // we saved the json file in another repository on github cause the original api was blocked on iran's network
+    // fetch the countrylist's data from the api
+    // we saved the json file in another repository on github cause the original api was broken somehow
     axios
       .get(
         `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
@@ -43,14 +43,12 @@ class App extends Component {
 
   render() {
     const { darkMode, totalCountries } = this.state;
-    // console.log(this.homePage);
-    // console.log(totalCountries);
     return (
       <BrowserRouter>
         <Switch>
           <Route
             exact
-            path={`${this.homePage}`}
+            path={this.homePage}
             render={routeProps => (
               <Dashboard
                 {...routeProps}
@@ -76,7 +74,11 @@ class App extends Component {
           />
           <Route
             render={routeProps => (
-              <NotFound {...routeProps} darkMode={darkMode} homePage={this.homePage}/>
+              <NotFound
+                {...routeProps}
+                darkMode={darkMode}
+                homePage={this.homePage}
+              />
             )}
           />
         </Switch>

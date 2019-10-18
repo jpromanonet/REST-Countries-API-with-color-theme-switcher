@@ -1,15 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./FilterBar.module.scss";
 
-/**
- * Hook that alerts clicks outside of the passed ref
+/*
+  our custom Hook that alerts clicks outside of the passed ref
  */
-const useOutsideAlerter = (ref, setDropDownFilterStatus) => {
+const useOutsideAlerter = (regionFilterRef, setDropDownFilterStatus) => {
   /**
    * Alert if clicked on outside of element
    */
   const handleClickOutside = event => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    if (
+      regionFilterRef.current &&
+      !regionFilterRef.current.contains(event.target)
+    ) {
       setDropDownFilterStatus(false);
     }
   };
@@ -33,8 +36,10 @@ const FilterBar = ({
 }) => {
   const [dropDownFilterStatus, setDropDownFilterStatus] = useState(false);
   // using react ref for detecting a click outside of region filter's dropdown menu
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, setDropDownFilterStatus);
+  const regionFilterRef = useRef(null);
+  //call our custom hook
+  useOutsideAlerter(regionFilterRef, setDropDownFilterStatus);
+
   return (
     <div
       ref={scrollTo}
@@ -53,7 +58,7 @@ const FilterBar = ({
         />
       </span>
       {/* region filter changer */}
-      <div className={styles.regionFilter} ref={wrapperRef}>
+      <div className={styles.regionFilter} ref={regionFilterRef}>
         <div
           className={darkMode ? `darkElements` : `lightElements`}
           onClick={() => setDropDownFilterStatus(!dropDownFilterStatus)}

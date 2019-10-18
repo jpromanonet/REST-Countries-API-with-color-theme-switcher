@@ -10,10 +10,8 @@ const CountryItem = ({
   name,
   population,
   region,
-  flag,
   homePage
 }) => {
-  // console.log("rest", rest);
   return (
     <Link to={`${homePage}countries/${name}`}>
       <figure
@@ -34,6 +32,7 @@ const CountryItem = ({
             <span
               className={darkMode ? styles.darkCaption : styles.lightCaption}
             >
+              {/* format the population number via numeral.js package */}
               {Numeral(population).format(0, 0)}
             </span>
           </div>
@@ -56,7 +55,6 @@ const CountryItem = ({
         </figcaption>
       </figure>
     </Link>
-    /*   <div>hi</div> */
   );
 };
 

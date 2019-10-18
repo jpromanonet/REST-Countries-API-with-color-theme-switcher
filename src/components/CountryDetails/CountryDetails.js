@@ -21,18 +21,18 @@ class CountryDetails extends Component {
     return this.state.redirect && <Redirect to="/404" />;
   };
 
-  componentDidMount() {
-    //get the necessary data for the current country
+  //get the country details
+  fetchCounrtyDetails = () => {
     axios
       .get(
         `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
       )
       .then(response => {
-        // console.log(this.props.match.params.countryName, response.data[0]);
         //search for the current country in the countries list
         const tempCountryDetails = response.data.find(
           country => country.name === this.props.match.params.countryName
         );
+        //do something whether the country was found or not
         if (tempCountryDetails) {
           this.setState(() => ({
             countryDetails: tempCountryDetails
@@ -42,23 +42,20 @@ class CountryDetails extends Component {
         }
       })
       .catch(error => console.log(error));
+  };
+
+  componentDidMount() {
+    //set the document's title after the first render
+    document.title = this.props.match.params.countryName;
+    //get the necessary data for the current country
+    this.fetchCounrtyDetails();
   }
   componentDidUpdate(prevProps) {
-    //set the document's title based on the current country
+    //set the document's title  whenever the component receives an update
     document.title = this.props.match.params.countryName;
-    //detect if the url key is changing and then update the state based on that
+    //detect if the url key has changed and then update the state based on that
     if (prevProps.location.key !== this.props.location.key) {
-      axios
-        .get(
-          `https://raw.githubusercontent.com/sinamoraddar/REST-Countries-API-with-color-theme-switcher--API/master/all.json`
-        )
-        .then(response => {
-          const tempCountryDetails = response.data.find(
-            country => country.name === this.props.match.params.countryName
-          );
-          this.setState(() => ({ countryDetails: tempCountryDetails }));
-        })
-        .catch(error => console.log(error));
+      this.fetchCounrtyDetails();
     }
   }
 
@@ -90,8 +87,8 @@ class CountryDetails extends Component {
             darkMode ? `dark` : `light`
           }`}
         >
-          {/* if the country details have not been fetched yet -> show loading gif
-              if done-> show the details
+          {/* if the country details have not been fetched yet -> show the loading gif
+              if they have-> show the details
           */}
           {countryDetails ? (
             /* show a message if the country ain't available in our database,
@@ -128,7 +125,7 @@ class CountryDetails extends Component {
                           className={
                             darkMode ? styles.darkDetails : styles.lightDetails
                           }
-                        >
+                        >{/* filter the population number with numeral.js package */}
                           {Numeral(countryDetails.population).format(0, 0)}
                         </span>
                       </p>
@@ -204,6 +201,7 @@ class CountryDetails extends Component {
                       </p>
                     </div>
                   </div>
+                  {/* render the border countries */}
                   {totalCountries && (
                     <BorderCountries
                       {...{ totalCountries, countryDetails }}

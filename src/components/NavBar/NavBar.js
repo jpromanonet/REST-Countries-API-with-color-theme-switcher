@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 
-const NavBar = ({ darkMode, page, appModeChanger,homePage }) => (
+const NavBar = ({ darkMode, appModeChanger, homePage }) => (
   <>
     <nav
       className={`${styles.container} ${styles.navBar} ${
@@ -17,7 +17,7 @@ const NavBar = ({ darkMode, page, appModeChanger,homePage }) => (
           darkMode ? `dark darkElements` : `light lightElements`
         }`}
         onClick={appModeChanger}
-      >
+      >{/* change the icons based on darkMode's state */}
         {darkMode ? (
           <>
             <i className="fas fa-moon"></i> Light Mode

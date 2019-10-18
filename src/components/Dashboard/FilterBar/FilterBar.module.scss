@@ -32,6 +32,7 @@
       background: none;
       height: 100%;
       flex-grow: 100;
+      //set the font size to 16px on touch screens to prevent auto zoom behavior
       @media screen and (hover: none) {
         font-size: $detailsPage;
       }
@@ -121,7 +122,7 @@
     transform: rotate(360deg);
   }
 }
-
+//drop down menu's animation
 @keyframes dropDown {
   from {
     height: 0;
